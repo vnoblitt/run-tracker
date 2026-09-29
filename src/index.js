@@ -2,61 +2,87 @@ import "./styles.css";
 import { data } from "./data.js";
 
 const content = document.getElementById("content");
-const buttonContainer = document.createElement("div");
-buttonContainer.id = "buttons";
 
-const fourHundredMButton = document.createElement("button");
-fourHundredMButton.textContent = "400m";
+const menu = document.createElement("div");
+menu.id = "menu";
 
-const halfMileButton = document.createElement("button");
-halfMileButton.textContent = "Half Mile";
+const fourHundredM = document.createElement("div");
+fourHundredM.textContent = "400m";
+fourHundredM.classList.add("col1");
 
-const oneKButton = document.createElement("button");
-oneKButton.textContent = "1K";
+const halfMile = document.createElement("div");
+halfMile.textContent = "Half Mile";
+halfMile.classList.add("col1");
 
-const oneMileButton = document.createElement("button");
-oneMileButton.textContent = "1 Mile";
+const oneK = document.createElement("div");
+oneK.textContent = "1K";
+oneK.classList.add("col1");
 
-const twoMileButton = document.createElement("button");
-twoMileButton.textContent = "2 Miles";
+const oneMile = document.createElement("div");
+oneMile.textContent = "1 Mile";
+oneMile.classList.add("col1");
 
-const fiveKButton = document.createElement("button");
-fiveKButton.textContent = "5K";
+const twoMile = document.createElement("div");
+twoMile.textContent = "2 Miles";
+twoMile.classList.add("col1");
 
-const tenKButton = document.createElement("button");
-tenKButton.textContent = "10K";
+const fiveK = document.createElement("div");
+fiveK.textContent = "5K";
+fiveK.classList.add("col1");
 
-buttonContainer.append(
-    fourHundredMButton,
-    halfMileButton,
-    oneKButton,
-    oneMileButton,
-    twoMileButton,
-    fiveKButton,
-    tenKButton
+const tenK = document.createElement("div");
+tenK.textContent = "10K";
+tenK.classList.add("col1");
+
+menu.append(
+    fourHundredM,
+    halfMile,
+    oneK,
+    oneMile,
+    twoMile,
+    fiveK,
+    tenK
 )
-content.append(buttonContainer);
+content.append(menu);
 
-fourHundredMButton.addEventListener("click", () => {
-    getTime("400m");
+const timesDiv = document.createElement("div");
+timesDiv.classList.add("times")
+content.append(timesDiv);
+
+fourHundredM.addEventListener("click", () => {
+    const times = getTimes("400m");
+    clearDiv();
+    makeDivs("400m", times);
 });
-halfMileButton.addEventListener("click", () => {
-    getTime("Half-Mile");
+halfMile.addEventListener("click", () => {
+    const times = getTimes("Half-Mile");
+    clearDiv();
+    makeDivs("Half-Mile", times);
 });
-oneKButton.addEventListener("click", () => {
-    getTime("1K");
+oneK.addEventListener("click", () => {
+    const times = getTimes("1K");
+    clearDiv();
+    makeDivs("1K", times);
 });
-oneMileButton.addEventListener("click", () => {
-    getTime("1-Mile");
+oneMile.addEventListener("click", () => {
+    const times = getTimes("1-Mile");
+    clearDiv();
+    makeDivs("1-Mile", times);
 });
-twoMileButton.addEventListener("click", () => {
-    getTime("2-Mile");
+twoMile.addEventListener("click", () => {
+    const times = getTimes("2-Mile");
+    clearDiv();
+    makeDivs("2-Mile", times);
 });
-fiveKButton.addEventListener("click", () => {
-    getTime("5K");
+fiveK.addEventListener("click", () => {
+    const times = getTimes("5K");
+    clearDiv();
+    makeDivs("5K", times);
 });
-tenKButton.addEventListener("click", () => {
-    getTime("10K");
+tenK.addEventListener("click", () => {
+    const times = getTimes("10K");
+    clearDiv();
+    makeDivs("10K", times);
 });
 
 /*
@@ -65,19 +91,32 @@ for (const time of Object.keys(data)) {
 }
 */
 
-console.log(data["1-Mile"])
 
-function getTime(length) {
-    const time = data[length];
-    console.log(time);
-    makeDiv(length, time);
+function getTimes(length) {
+    let times = [];
+    for(const time of data[length]) {
+        times.push(time);
+    }
+    return times;
 }
 
-function makeDiv(length, time) {
-    const div = document.createElement("div");
-    const para = document.createElement("p");
+function makeDivs(length, times) {
+    const title = document.createElement("h1");
+    const firstBestP = document.createElement("p");
+    firstBestP.classList.add("pbs", "first");
+    const secondBestP = document.createElement("p");
+    secondBestP.classList.add("pbs", "second");
+    const thirdBestP = document.createElement("p");
+    thirdBestP.classList.add("pbs", "third");
 
-    para.textContent = `${length}: ${time}`;
-    div.append(para);
-    content.append(div);
+    firstBestP.textContent = `1st: ${times[0].time} on ${times[0].date}`;
+    secondBestP.textContent = `2nd: ${times[1].time} on ${times[1].date}`; 
+    thirdBestP.textContent = `3rd: ${times[2].time} on ${times[2].date}`;
+
+    title.textContent = `${length}`;
+    timesDiv.append(title, firstBestP, secondBestP, thirdBestP);
+}
+
+function clearDiv() {
+    timesDiv.innerHTML = ""
 }

@@ -1,10 +1,80 @@
 /* styles.css */
 body {
-  background-color: white;
+  background-color: aliceblue;
+  margin: 0;
+  box-sizing: border-box;
 }
 
-#buttons {
+nav { 
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: row;
+
+    justify-content: end;
+    gap: 2rem;
+    background-color: greenyellow;
+    border: 1px solid black;
+    
+    
+}
+
+#title {
+    margin-right: auto;
+}
+
+#title,
+#times,
+#schedule,
+#workouts {
+    padding: 1rem;
+}
+
+#times:hover,
+#schedule:hover,
+#workouts:hover {
+    background-color: green;
+    cursor: pointer;
+    
+}
+
+#content {
+    display: flex;
+    flex-direction: row;
+}
+
+#menu {
     display: grid;
-    grid-template-columns: repeat(7, 1fr);
-    gap: 5rem;
+}
+
+.col1 {
+    grid-column: 1;
+    width: 5rem;
+    height: 2rem;
+    background-color: aquamarine;
+    padding: 1rem;
+    align-content: center;
+    border: 1px solid black;
+}
+
+.col1:hover {
+    background-color: aqua;
+    cursor: pointer;
+}
+
+.times {
+    width: 100%;
+    text-align: center;
+    justify-items: center;
+}
+.pbs {
+    width: 50vw;
+}
+.first {
+    background-color: gold;
+}
+.second {
+    background-color: silver;
+}
+.third {
+    background-color:  #CD7F32;
 }
