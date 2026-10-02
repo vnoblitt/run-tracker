@@ -1,25 +1,33 @@
 /* styles.css */
+html {
+    height: 100%;
+}
+
 body {
   background-color: aliceblue;
   margin: 0;
   box-sizing: border-box;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
 nav { 
     box-sizing: border-box;
     display: flex;
     flex-direction: row;
-
+    height: 4rem;
     justify-content: end;
     gap: 2rem;
     background-color: greenyellow;
     border: 1px solid black;
-    
-    
+    flex-shrink: 0;
 }
 
 #title {
     margin-right: auto;
+    font-family: "Ranchers", sans-serif;
+    font-size: 2rem;
 }
 
 #title,
@@ -27,6 +35,7 @@ nav {
 #schedule,
 #workouts {
     padding: 1rem;
+    align-content: center;
 }
 
 #times:hover,
@@ -40,23 +49,25 @@ nav {
 #content {
     display: flex;
     flex-direction: row;
+    flex: 1;
 }
 
 #menu {
-    display: grid;
+    display: flex;
+    flex-direction: column;
 }
 
-.col1 {
-    grid-column: 1;
-    width: 5rem;
-    height: 2rem;
+.sidebar {
+    flex: 1;
+    width: 10vw;
+ 
     background-color: aquamarine;
     padding: 1rem;
     align-content: center;
     border: 1px solid black;
 }
 
-.col1:hover {
+.sidebar:hover {
     background-color: aqua;
     cursor: pointer;
 }
@@ -77,4 +88,31 @@ nav {
 }
 .third {
     background-color:  #CD7F32;
+}
+
+.calendar {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    flex: 1;
+    box-sizing: border-box;
+    padding: 2rem;
+}
+
+.Sun { grid-column: 1; }
+.Mon { grid-column: 2; }
+.Tue { grid-column: 3; }
+.Wed { grid-column: 4; }
+.Thu { grid-column: 5; }
+.Fri { grid-column: 6; }
+.Sat { grid-column: 7; }
+
+.Sun, 
+.Mon,
+.Tue, 
+.Wed,
+.Thu,
+.Fri,
+.Sat {
+    box-sizing: border-box;
+    border: 1px solid black;
 }
